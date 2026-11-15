@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d13">
+  <meta name="description" content="A fan-made community hub for discovering and sharing mods made for Horizon.">
+  <title>Horizon Mods — Fan-made community</title>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/horizon-rust/horizon/main/packaging/icons/hicolor/512x512/apps/horizon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement"><span class="announcement-dot"></span> Fan-made community project <span class="announcement-separator">·</span> Not affiliated with the Horizon developers <a href="https://playhorizon.dev/mods" target="_blank" rel="noopener">Visit official registry <span aria-hidden="true">↗</span></a></div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Horizon Mods home">
+      <img class="brand-mark" src="https://raw.githubusercontent.com/horizon-rust/horizon/main/packaging/icons/hicolor/512x512/apps/horizon.png" alt="">
+      <span class="brand-word">Horizon<span class="brand-word-soft">Mods</span><small>COMMUNITY</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-view="home"><span class="nav-icon" data-icon="house"></span>Home</button>
+      <button class="nav-link" data-view="discovery"><span class="nav-icon" data-icon="compass"></span>Discovery</button>
+      <button class="nav-link" data-view="post"><span class="nav-icon" data-icon="plus-square"></span>Post</button>
+      <button class="nav-link profile-nav" data-view="profile"><span class="nav-icon" data-icon="user-round"></span>Profile</button>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="themeToggle" aria-label="Toggle color theme" title="Toggle color theme"><span data-icon="sun-moon"></span></button>
+      <button class="account-button" id="accountButton"><span class="account-avatar" id="accountAvatar">J</span><span id="accountButtonText">Sign in</span></button>
+      <button class="mobile-menu-button icon-button" id="mobileMenuButton" aria-label="Open navigation"><span data-icon="menu"></span></button>
+    </div>
+  </header>
+
+  <main id="appMain">
+    <section class="view active" id="view-home" aria-labelledby="homeHeading">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> THE COMMUNITY MOD HUB</div>
+          <h1 id="homeHeading">Make your Horizon<br><span class="gradient-text">more yours.</span></h1>
+          <p class="hero-description">Discover community-made mods, shaders, resource packs and more — all in one place, made for Horizon.</p>
+          <div class="hero-ctas">
+            <button class="button button-primary" data-go="discovery"><span data-icon="compass"></span>Explore projects</button>
+            <button class="button button-secondary" data-go="post"><span data-icon="upload"></span>Publish a mod</button>
+          </div>
+          <div class="hero-footnote"><span data-icon="shield-check"></span> Community uploads · Always check the source before installing</div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+          <div class="hero-cube cube-back"><i></i><b></b><em></em></div>
+          <div class="hero-cube cube-front"><i></i><b></b><em></em></div>
+          <div class="hero-chip chip-top"><span data-icon="sparkles"></span> Built for Horizon</div>
+          <div class="hero-chip chip-bottom"><span class="status-pulse"></span> MOD COMMUNITY</div>
+          <div class="hero-glow"></div>
+        </div>
+      </section>
+
+      <section class="shell quick-stats" aria-label="Community statistics">
+        <div class="stat-card"><span class="stat-icon" data-icon="package"></span><div><strong id="statProjects">0</strong><span>Featured projects</span></div></div>
+        <div class="stat-card"><span class="stat-icon" data-icon="users"></span><div><strong id="statCreators">0</strong><span>Local creators</span></div></div>
+        <div class="stat-card"><span class="stat-icon" data-icon="blocks"></span><div><strong>6</strong><span>Supported formats</span></div></div>
+        <div class="stat-card"><span class="stat-icon" data-icon="cloud-upload"></span><div><strong>64 MB</strong><span>Maximum upload</span></div></div>
+      </section>
+
+      <section class="shell content-section" id="browseSection">
+        <div class="section-heading-row">
+          <div><div class="eyebrow">FIND YOUR NEXT FAVORITE</div><h2>Explore projects</h2><p class="section-subtitle">A few ideas to get you started, plus projects published in this browser.</p></div>
+          <button class="text-button" data-go="discovery">View discovery <span data-icon="arrow-up-right"></span></button>
+        </div>
+        <div class="search-toolbar">
+          <label class="search-box"><span data-icon="search"></span><input type="search" id="homeSearch" placeholder="Search mods, shaders, creators..." autocomplete="off"><kbd>/</kbd></label>
+          <div class="filter-pills" id="homeFilters">
+            <button class="filter-pill selected" data-filter="All">All projects</button>
+            <button class="filter-pill" data-filter="Mod">Mods</button>
+            <button class="filter-pill" data-filter="Native mod">Native mods</button>
+            <button class="filter-pill" data-filter="Shader pack">Shaders</button>
+            <button class="filter-pill" data-filter="Resource pack">Resource packs</button>
+          </div>
+        </div>
+        <div class="project-grid" id="homeProjectGrid"></div>
+        <div class="empty-state hidden" id="homeEmpty"><span data-icon="search-x"></span><h3>No projects found</h3><p>Try another search or clear your filters.</p><button class="button button-secondary button-small" id="clearHomeSearch">Clear search</button></div>
+      </section>
+
+      <section class="shell creator-banner">
+        <div class="creator-banner-icon"><span data-icon="wand-sparkles"></span></div>
+        <div><div class="eyebrow">HAVE SOMETHING TO SHARE?</div><h2>Your next project belongs here.</h2><p>Publish your mod with its details, icon, screenshots and download file.</p></div>
+        <button class="button button-primary" data-go="post">Start publishing <span data-icon="arrow-right"></span></button>
+      </section>
+    </section>
+
+    <section class="view shell" id="view-discovery" aria-labelledby="discoveryHeading">
+      <div class="page-heading"><div class="eyebrow">BROWSE THE COMMUNITY</div><h1 id="discoveryHeading">Discovery<span class="heading-period">.</span></h1><p>Find something new for your next Horizon session.</p></div>
+      <div class="discovery-toolbar">
+        <label class="search-box"><span data-icon="search"></span><input type="search" id="discoverySearch" placeholder="Search by name, tag, author or ID..."><kbd>/</kbd></label>
+        <label class="select-wrap"><span class="sr-only">Sort projects</span><select id="sortSelect"><option value="popular">Trending first</option><option value="newest">Recently published</option><option value="name">Name A–Z</option></select><span data-icon="chevron-down"></span></label>
+      </div>
+      <div class="discovery-layout">
+        <aside class="filter-sidebar">
+          <div class="filter-group"><h3>Project type</h3><div id="typeFilters" class="sidebar-options">
+            <button class="sidebar-option selected" data-filter="All"><span data-icon="grid-2x2"></span>All projects<span class="option-count" id="countAll">0</span></button>
+            <button class="sidebar-option" data-filter="Mod"><span data-icon="box"></span>Mod</button>
+            <button class="sidebar-option" data-filter="Native mod"><span data-icon="code-2"></span>Native mod</button>
+            <button class="sidebar-option" data-filter="Modpack"><span data-icon="boxes"></span>Modpack</button>
+            <button class="sidebar-option" data-filter="Shader pack"><span data-icon="sun"></span>Shader pack</button>
+            <button class="sidebar-option" data-filter="Resource pack"><span data-icon="palette"></span>Resource pack</button>
+            <button class="sidebar-option" data-filter="Data pack"><span data-icon="database"></span>Data pack</button>
+          </div></div>
+          <div class="filter-group"><h3>Categories</h3><div class="category-checks" id="categoryFilters">
+            <label><input type="checkbox" value="Optimization">Optimization</label><label><input type="checkbox" value="Utility">Utility</label><label><input type="checkbox" value="Game mechanics">Game mechanics</label><label><input type="checkbox" value="Visuals">Visuals</label><label><input type="checkbox" value="World generation">World generation</label>
+          </div></div>
+          <button class="clear-filters" id="clearFilters">Clear all filters</button>
+        </aside>
+        <div class="discovery-results"><div class="results-heading"><strong id="resultsCount">0 projects</strong><span>Community picks and local uploads</span></div><div class="project-grid" id="discoveryProjectGrid"></div><div class="empty-state hidden" id="discoveryEmpty"><span data-icon="package-open"></span><h3>Nothing here yet</h3><p>There are no projects matching those filters.</p></div></div>
+      </div>
+    </section>
+
+    <section class="view shell" id="view-post" aria-labelledby="postHeading">
+      <div class="page-heading post-page-heading"><div class="eyebrow">SHARE WITH THE COMMUNITY</div><h1 id="postHeading">Publish a project<span class="heading-period">.</span></h1><p>Everything your project needs, in one place. Your upload is validated before it is published.</p></div>
+      <div class="post-layout">
+        <form id="publishForm" novalidate>
+          <div class="form-step-card">
+            <div class="form-step-heading"><span class="step-number">01</span><div><h2>The file</h2><p>Choose your project type and upload the file.</p></div></div>
+            <div class="form-grid two-col">
+              <label class="field"><span>Kind <b class="required">*</b></span><select id="projectKind" required><option value="Mod">Mod (.hmod)</option><option value="Native mod">Native mod (.hnmod)</option><option value="Modpack">Modpack (.hpack)</option><option value="Shader pack">Horizon shader pack (.hshader)</option><option value="Compatible shader pack">Compatible shader pack (.zip)</option><option value="Resource pack">Resource pack (.zip)</option><option value="Data pack">Data pack (.zip)</option></select></label>
+              <label class="field"><span>Project ID <b class="required">*</b></span><input id="projectId" type="text" value="my_mod" pattern="[a-z0-9_]{1,64}" maxlength="64" required><small>Lowercase letters, numbers and underscores.</small></label>
+            </div>
+            <label class="upload-zone file-upload-zone" for="projectFile" id="projectFileZone"><input id="projectFile" type="file" required><span class="upload-icon" data-icon="file-up"></span><strong>Drop your project file here</strong><span class="upload-hint">or <u>browse files</u> · Maximum size 64 MB</span><span class="file-selection" id="projectFileName">No file selected</span></label>
+            <div class="form-grid two-col">
+              <label class="field"><span>Version <b class="required">*</b></span><input id="projectVersion" type="text" value="1.0.0" placeholder="1.0.0" required></label>
+              <label class="field"><span>For Minecraft <b class="required">*</b></span><input id="minecraftVersion" type="text" value="26.3" placeholder="26.3" required></label>
+            </div>
+            <label class="field"><span>What changed <b class="required">*</b></span><textarea id="changelog" rows="5" required>Initial release.
+
+- Added new features.
+- Improved performance.
+- Fixed known issues.
+- Added compatibility improvements.</textarea></label>
+          </div>
+
+          <div class="form-step-card">
+            <div class="form-step-heading"><span class="step-number">02</span><div><h2>Its page</h2><p>Tell players what your project does.</p></div></div>
+            <label class="field"><span>Name <b class="required">*</b></span><input id="projectName" type="text" placeholder="My Mod" maxlength="64" required></label>
+            <div class="form-grid two-col">
+              <label class="field"><span>Licence <b class="required">*</b></span><select id="projectLicense" required><option>MIT</option><option>Apache-2.0</option><option>GPL-3.0</option><option>GPL-2.0</option><option>BSD-3-Clause</option><option>MPL-2.0</option><option>All rights reserved</option><option>Other</option></select></label>
+              <label class="field"><span>Authors <b class="required">*</b></span><input id="projectAuthors" type="text" value="JerronMC" placeholder="JerronMC" required></label>
+            </div>
+            <label class="field"><span>Summary <b class="required">*</b></span><textarea id="projectSummary" rows="2" maxlength="160" placeholder="An exciting Minecraft modification..." required></textarea><small class="field-counter"><span id="summaryCount">0</span>/160 characters</small></label>
+            <label class="field"><span>Description <b class="required">*</b></span><textarea id="projectDescription" class="description-input" rows="16" required># My Mod
+
+Welcome to My Mod!
+
+A Minecraft modification designed to improve your gameplay with new features, enhancements and optimizations.
+
+## Features
+
+- New gameplay features
+- Improved performance
+- Optimized resource usage
+- Smooth gameplay experience
+- Easy installation
+- Horizon compatibility
+
+## How to Install
+
+1. Download the file.
+2. Open Horizon.
+3. Import the downloaded file.
+4. Enable the mod or pack.
+5. Launch Minecraft.
+
+## Compatibility
+
+- Minecraft: 26.3
+- Launcher: Horizon
+
+## Requirements
+
+- Horizon Launcher
+- Compatible Minecraft version
+
+## Credits
+
+Created by JerronMC.
+
+## Version
+
+1.0.0 — Initial Release</textarea><small>Markdown is supported in the project details page.</small></label>
+            <div class="field"><span>Categories <b class="required">*</b> <small class="inline-help">Choose 1–3</small></span><div class="choice-chips" id="projectCategories"><label><input type="checkbox" value="Optimization"><span>Optimization</span></label><label><input type="checkbox" value="Utility"><span>Utility</span></label><label><input type="checkbox" value="Game mechanics"><span>Game mechanics</span></label><label><input type="checkbox" value="Visuals"><span>Visuals</span></label><label><input type="checkbox" value="World generation"><span>World generation</span></label><label><input type="checkbox" value="Building"><span>Building</span></label></div></div>
+            <label class="field"><span>Tags <small class="inline-help">Optional · up to 10, comma separated</small></span><input id="projectTags" type="text" value="minecraft, horizon, optimization, gaming, mod, performance, enhancement" placeholder="minecraft, horizon, visuals"><small>Use short keywords players might search for.</small></label>
+            <label class="field"><span>Source code <b class="required">*</b></span><div class="input-with-icon"><span data-icon="github"></span><input id="projectSource" type="url" value="https://github.com/YOUR_USERNAME/YOUR_REPOSITORY" placeholder="https://github.com/username/repository" required></div><small>Link to the source repository for this project.</small></label>
+            <div class="field"><span>Icon <b class="required">*</b></span><label class="upload-zone compact-upload" for="projectIcon" id="projectIconZone"><input id="projectIcon" type="file" accept="image/png" required><span class="upload-icon" data-icon="image-plus"></span><span><strong>Upload project icon</strong><small>PNG · Square · 64–1024 px · Max 256 KiB</small></span><span class="file-selection" id="projectIconName">Choose PNG</span></label></div>
+            <div class="field"><span>Screenshots <small class="inline-help">Optional · up to 8</small></span><label class="upload-zone compact-upload" for="projectScreenshots" id="screenshotsZone"><input id="projectScreenshots" type="file" accept="image/png,image/jpeg" multiple><span class="upload-icon" data-icon="images"></span><span><strong>Add project screenshots</strong><small>PNG or JPEG · 320×180 to 3840×2160 · Max 1 MiB each</small></span><span class="file-selection" id="screenshotsName">0 selected</span></label><div class="screenshot-preview" id="screenshotPreview"></div></div>
+          </div>
+
+          <div class="form-step-card">
+            <div class="form-step-heading"><span class="step-number">03</span><div><h2>Agreement</h2><p>Please confirm these points before publishing.</p></div></div>
+            <div class="agreement-list">
+              <label><input type="checkbox" class="agreement-check"><span>I made this project, or I have permission to publish it under the selected licence.</span></label>
+              <label><input type="checkbox" class="agreement-check"><span>The source code link above belongs to this project.</span></label>
+              <label><input type="checkbox" class="agreement-check"><span>I have read and accept the community mod policy.</span></label>
+              <label><input type="checkbox" class="agreement-check"><span>I am responsible for this project and its contents.</span></label>
+            </div>
+            <p class="policy-note"><span data-icon="info"></span> Only publish files you own or are allowed to share. Native mods can execute code; players should review the source and only install files from creators they trust.</p>
+          </div>
+          <div class="publish-actions"><p id="publishError" class="form-error" role="alert"></p><button class="button button-primary button-publish" type="submit"><span data-icon="upload-cloud"></span>POST PROJECT</button><span class="publish-caption">Your project is published immediately in this browser.</span></div>
+        </form>
+        <aside class="post-sidebar">
+          <div class="publish-preview-card"><div class="preview-topline"><span>LIVE PREVIEW</span><span class="preview-dot"></span></div><div class="preview-icon-placeholder" id="liveIconPreview"><span data-icon="package"></span></div><h3 id="liveNamePreview">My Mod</h3><div class="preview-meta"><span id="liveKindPreview">Mod</span><span>·</span><span id="liveVersionPreview">1.0.0</span></div><p id="liveSummaryPreview">Your project summary will appear here.</p><div class="preview-author"><span class="mini-avatar">J</span><span id="liveAuthorPreview">JerronMC</span></div></div>
+          <div class="sidebar-info-card"><span class="sidebar-info-icon" data-icon="zap"></span><h3>Instant publishing</h3><p>There is no review queue in this fan-made demo. Valid projects are marked published right away and appear in your local project feed.</p></div>
+          <div class="sidebar-info-card"><span class="sidebar-info-icon" data-icon="hard-drive"></span><h3>Local browser storage</h3><p>On GitHub Pages, this version saves posts to the current browser only. Shared publishing for everyone requires a connected backend.</p></div>
+          <div class="format-card"><h3>Supported formats</h3><div><code>.hmod</code><span>Content mod</span></div><div><code>.hnmod</code><span>Native mod</span></div><div><code>.hpack</code><span>Modpack</span></div><div><code>.hshader</code><span>Horizon shader pack</span></div><div><code>.zip</code><span>Compatible shader pack</span></div><div><code>.zip</code><span>Resource / data pack</span></div><a href="https://playhorizon.dev/docs/mods" target="_blank" rel="noopener">Horizon format docs <span data-icon="external-link"></span></a></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view shell" id="view-profile" aria-labelledby="profileHeading">
+      <div class="page-heading"><div class="eyebrow">YOUR CREATOR SPACE</div><h1 id="profileHeading">Profile<span class="heading-period">.</span></h1><p>Manage your account and published projects.</p></div>
+      <div id="profileLoggedOut" class="auth-empty-card"><div class="auth-empty-icon"><span data-icon="user-round"></span></div><h2>Sign in to your creator profile</h2><p>Create a local profile to publish projects and manage your uploads on this device.</p><button class="button button-primary" id="profileSignIn"><span data-icon="log-in"></span>Sign in / Create account</button><small>Local demo account · Not a production login system</small></div>
+      <div id="profileLoggedIn" class="hidden">
+        <div class="profile-cover-card"><div class="profile-big-avatar" id="profileBigAvatar">J</div><div class="profile-user-info"><span class="creator-badge"><span data-icon="badge-check"></span> CREATOR</span><h2 id="profileName">Creator</h2><p id="profileEmail">creator@example.com</p></div><button class="button button-secondary button-small" id="signOutButton"><span data-icon="log-out"></span>Sign out</button></div>
+        <div class="profile-stats-row"><div><strong id="profileProjectCount">0</strong><span>Published projects</span></div><div><strong>Local</strong><span>Storage mode</span></div><div><strong>Active</strong><span>Account status</span></div></div>
+        <div class="section-heading-row profile-project-heading"><div><h2>Your projects</h2><p class="section-subtitle">Projects you've published from this browser.</p></div><button class="button button-primary button-small" data-go="post"><span data-icon="plus"></span>New project</button></div>
+        <div class="project-grid" id="profileProjectGrid"></div><div class="empty-state hidden" id="profileEmpty"><span data-icon="package-open"></span><h3>No projects published yet</h3><p>Your first upload will show up here.</p><button class="button button-primary button-small" data-go="post">Publish your first project</button></div>
+        <div class="local-data-notice"><span data-icon="database"></span><div><strong>Your data stays in this browser</strong><p>Clearing browser data or changing devices can remove access to these local projects. This profile is not connected to a central account service.</p></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><a class="brand footer-brand" href="#home"><img class="brand-mark" src="https://raw.githubusercontent.com/horizon-rust/horizon/main/packaging/icons/hicolor/512x512/apps/horizon.png" alt=""><span class="brand-word">Horizon<span class="brand-word-soft">Mods</span><small>COMMUNITY</small></span></a><p>A fan-made community project by <strong>Jerron</strong>.</p><div class="footer-links"><a href="https://playhorizon.dev" target="_blank" rel="noopener">Horizon website</a><a href="https://playhorizon.dev/mods" target="_blank" rel="noopener">Official mod registry</a><a href="README.md">Setup guide</a></div></div><div class="footer-disclaimer">Not affiliated with or endorsed by the Horizon developers, Mojang or Microsoft. Minecraft is a trademark of Mojang Synergies AB.</div></footer>
+
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation"><button class="active" data-view="home"><span data-icon="house"></span><small>Home</small></button><button data-view="discovery"><span data-icon="compass"></span><small>Discover</small></button><button data-view="post"><span data-icon="plus-square"></span><small>Post</small></button><button data-view="profile"><span data-icon="user-round"></span><small>Profile</small></button></nav>
+
+  <div class="modal-backdrop hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+    <div class="modal-card auth-modal-card"><button class="modal-close icon-button" data-close-modal aria-label="Close"><span data-icon="x"></span></button><div class="modal-brand-mark"><img src="https://raw.githubusercontent.com/horizon-rust/horizon/main/packaging/icons/hicolor/512x512/apps/horizon.png" alt=""></div><div class="eyebrow">WELCOME TO THE COMMUNITY</div><h2 id="authModalTitle">Your creator account</h2><p class="modal-intro">Sign in or create a local profile to post projects.</p>
+      <div class="auth-tabs"><button class="auth-tab active" data-auth-tab="signin">Sign in</button><button class="auth-tab" data-auth-tab="signup">Create account</button></div>
+      <form id="authForm"><label class="field" id="authUsernameField"><span>Username</span><input id="authUsername" type="text" placeholder="Your creator name" autocomplete="username"></label><label class="field"><span>Email</span><input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email" required></label><label class="field"><span>Password</span><input id="authPassword" type="password" placeholder="At least 8 characters" minlength="8" autocomplete="current-password" required></label><p id="authError" class="form-error" role="alert"></p><button type="submit" class="button button-primary auth-submit" id="authSubmit">Sign in</button></form>
+      <p class="auth-privacy-note"><span data-icon="lock-keyhole"></span> Demo mode only: this account is stored in this browser. Do not reuse a real password.</p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><div class="modal-card detail-modal-card"><button class="modal-close icon-button" data-close-modal aria-label="Close"><span data-icon="x"></span></button><div id="detailContent"></div></div></div>
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+  <script src="app.js"></script>
+</body>
+</html>
